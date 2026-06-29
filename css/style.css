@@ -311,98 +311,91 @@ ul { list-style: none; }
   gap: 16px;
 }
 
-/* ── Company pins (logo + post-it tag) ────────────────────── */
+/* ── Company pins (circle logo + post-it tag) ──────────────── */
 .postit-wrap {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
   padding: 8px 0;
 }
 
 .company-pin {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 0;
   text-decoration: none;
+  transition: transform 0.2s;
 }
+.company-pin:hover { transform: translateY(-3px); }
 
-.company-pin-logo {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
+/* Circle logo */
+.company-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   background: var(--surface);
-  border: var(--border);
-  box-shadow: var(--shadow);
+  border: 3px solid var(--border-color, #e2e0ea);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
 }
-.company-pin-logo img {
+.company-circle img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-.company-pin:hover .company-pin-logo {
-  transform: scale(1.06);
-  box-shadow: var(--shadow-md);
-}
 
+/* Post-it note tucked right against the circle */
 .postit {
-  position: relative;
-  padding: 14px 18px 14px 14px;
+  padding: 12px 18px 12px 20px;
   border-radius: 2px;
-  box-shadow: 3px 4px 14px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.07);
+  box-shadow: 3px 4px 12px rgba(0,0,0,0.13);
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  gap: 2px;
+  margin-left: -10px; /* overlap slightly so it looks stuck on */
 }
-.postit-pink {
-  background: #fce4ff;
-  transform: rotate(-1.2deg);
-}
-.postit-yellow {
-  background: #fff9c4;
-  transform: rotate(1deg);
-}
-[data-theme="dark"] .postit-pink  { background: #3d1a45; }
+.postit-pink  { background: #fce4ff; transform: rotate(-1deg); }
+.postit-yellow { background: #fff9c4; transform: rotate(0.8deg); }
+[data-theme="dark"] .postit-pink   { background: #3d1a45; }
 [data-theme="dark"] .postit-yellow { background: #2e2a08; }
 
 .company-pin:hover .postit {
-  transform: rotate(0deg) translateY(-2px);
-  box-shadow: 5px 8px 20px rgba(0,0,0,0.15);
+  transform: rotate(0deg);
+  box-shadow: 5px 6px 18px rgba(0,0,0,0.16);
 }
 
 .postit strong {
   display: block;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--body-text);
   line-height: 1.2;
 }
 .postit span {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--muted);
   font-weight: 500;
 }
 .postit em {
   display: block;
   font-style: normal;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--pink);
-  margin-top: 4px;
+  margin-top: 5px;
   letter-spacing: 0.02em;
 }
 
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .postit-wrap { flex-direction: row; flex-wrap: wrap; }
-  .company-pin { flex: 1; min-width: 200px; }
+  .postit-wrap { flex-direction: row; flex-wrap: wrap; gap: 24px; }
 }
 @media (max-width: 600px) {
   .postit-wrap { flex-direction: column; }
