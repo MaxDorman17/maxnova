@@ -311,130 +311,98 @@ ul { list-style: none; }
   gap: 16px;
 }
 
-/* ── Post-it notes ────────────────────────────────────────── */
+/* ── Company pins (logo + post-it tag) ────────────────────── */
 .postit-wrap {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  padding: 16px 8px;
+  gap: 32px;
+  padding: 8px 0;
+}
+
+.company-pin {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.company-pin-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.company-pin-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.company-pin:hover .company-pin-logo {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-md);
 }
 
 .postit {
   position: relative;
-  display: block;
-  text-decoration: none;
-  padding: 28px 28px 24px;
+  padding: 14px 18px 14px 14px;
   border-radius: 2px;
-  box-shadow: 4px 6px 24px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 3px 4px 14px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .postit-pink {
   background: #fce4ff;
-  transform: rotate(-1.5deg);
+  transform: rotate(-1.2deg);
 }
 .postit-yellow {
   background: #fff9c4;
-  transform: rotate(1.2deg);
+  transform: rotate(1deg);
 }
-
 [data-theme="dark"] .postit-pink  { background: #3d1a45; }
-[data-theme="dark"] .postit-yellow { background: #3a3410; }
+[data-theme="dark"] .postit-yellow { background: #2e2a08; }
 
-.postit:hover {
-  transform: rotate(0deg) translateY(-4px) scale(1.02);
-  box-shadow: 8px 16px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.postit-pin {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, #ff6b6b, #c0392b);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1;
-}
-.postit-pin::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 8px;
-  background: rgba(0,0,0,0.25);
-  border-radius: 0 0 2px 2px;
+.company-pin:hover .postit {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 5px 8px 20px rgba(0,0,0,0.15);
 }
 
-.postit-logo {
-  margin-bottom: 14px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-}
-.postit-logo img {
-  height: 36px;
-  max-width: 160px;
-  object-fit: contain;
-  object-position: left center;
-}
-
-.postit-title {
-  font-size: 1.3rem;
+.postit strong {
+  display: block;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--ink, #120810);
-  margin: 0 0 4px;
-  line-height: 1.1;
-}
-[data-theme="dark"] .postit-title { color: #f0e8f5; }
-
-.postit-desc {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 14px;
-}
-
-.postit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.postit-list li {
-  font-size: 0.82rem;
   color: var(--body-text);
-  padding-left: 14px;
-  position: relative;
+  line-height: 1.2;
 }
-.postit-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--pink);
-  font-weight: 700;
-  font-size: 0.75rem;
+.postit span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
 }
-
-.postit-link {
-  font-size: 0.75rem;
+.postit em {
+  display: block;
+  font-style: normal;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--pink);
-  letter-spacing: 0.03em;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .postit-wrap { flex-direction: row; }
-  .postit { flex: 1; }
+  .postit-wrap { flex-direction: row; flex-wrap: wrap; }
+  .company-pin { flex: 1; min-width: 200px; }
 }
 @media (max-width: 600px) {
   .postit-wrap { flex-direction: column; }
