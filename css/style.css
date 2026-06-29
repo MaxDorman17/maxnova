@@ -381,7 +381,7 @@ ul { list-style: none; }
   justify-content: center;
   box-shadow: var(--shadow-md);
 }
-.about-logo-wrap img { max-height: 120px; width: auto; }
+.about-logo-wrap img { max-height: 160px; width: auto; object-fit: contain; }
 
 .about-badge {
   position: absolute;
