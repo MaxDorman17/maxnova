@@ -16,7 +16,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://maxnova.co.uk" />
 
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -266,18 +266,73 @@
   </div>
 </section>
 
-<!-- ══ CONTACT STRIP ══════════════════════════════════════════ -->
-<section class="contact-strip" id="contact">
-  <div class="contact-strip-glow"></div>
+<!-- ══ CONTACT ════════════════════════════════════════════════ -->
+<section class="contact-section" id="contact">
   <div class="container">
-    <div class="contact-strip-inner">
-      <h2 class="comic reveal">Let's talk.</h2>
-      <p class="reveal d1">Whether you need IT support, a new website, or both — we'd love to hear from you.</p>
-      <div class="contact-strip-links reveal d2">
-        <a href="mailto:maxd@ittechs.io" class="btn btn-primary">maxd@ittechs.io</a>
-        <a href="https://tech.maxnova.co.uk" target="_blank" rel="noopener" class="btn btn-outline">MaxNova Tech ↗</a>
-        <a href="https://design.maxnova.co.uk" target="_blank" rel="noopener" class="btn btn-outline">MaxNova Creative ↗</a>
+    <div class="contact-grid">
+
+      <div class="contact-left reveal">
+        <span class="section-kicker">Get In Touch</span>
+        <h2 class="contact-title">Let's talk.</h2>
+        <p class="contact-sub">Whether you need IT support, a new website, or both — we'd love to hear from you.</p>
+        <div class="contact-details">
+          <div class="contact-detail-row">
+            <span class="contact-detail-icon">✉</span>
+            <div>
+              <span class="contact-detail-label">Email</span>
+              <a href="mailto:maxd@ittechs.io" class="contact-detail-value">maxd@ittechs.io</a>
+            </div>
+          </div>
+          <div class="contact-detail-row">
+            <span class="contact-detail-icon">📍</span>
+            <div>
+              <span class="contact-detail-label">Based</span>
+              <span class="contact-detail-value">Kirkcaldy, Scotland, UK</span>
+            </div>
+          </div>
+          <div class="contact-detail-row">
+            <span class="contact-detail-icon" style="color:var(--pink);">●</span>
+            <div>
+              <span class="contact-detail-label">Status</span>
+              <span class="contact-detail-value" style="color:var(--pink);font-weight:700;">Open for new projects</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="contact-right reveal d2">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mrewknzv" method="POST" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="jane@business.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="enquiry" class="form-label">What do you need? <span class="req">*</span></label>
+            <select id="enquiry" name="enquiry" class="form-input form-select" required>
+              <option value="" disabled selected>Select an option…</option>
+              <option value="tech">IT Support &amp; Technology</option>
+              <option value="design">Web Design &amp; Creative</option>
+              <option value="both">Both Tech &amp; Creative</option>
+              <option value="group">General Group Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message <span class="req">*</span></label>
+            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about your project or enquiry…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
+          <div class="form-success" id="formSuccess" aria-live="polite" style="display:none;">
+            ✦ Message sent! We'll get back to you shortly.
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>
@@ -338,6 +393,7 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
 <script src="js/main.js"></script>
+<script src="js/contact.js"></script>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
